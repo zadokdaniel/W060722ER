@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const TodoForm = ({ onSubmit }) => {
+const TodoForm = ({ onSubmit = () => {} }) => {
   const [input, setInput] = useState("");
   const [error, setError] = useState(null);
 
@@ -21,7 +21,7 @@ const TodoForm = ({ onSubmit }) => {
 
   return (
     <div className="todo-form">
-      <div className="input-group mb-3">
+      <div className="input-group">
         <span className="input-group-text">I need to:</span>
         <input
           value={input}
@@ -32,13 +32,13 @@ const TodoForm = ({ onSubmit }) => {
             }
           }}
           type="text"
-          className="form-control"
+          className={["form-control", error ? "is-invalid" : ""].join(" ")}
           placeholder="Buy milk"
         />
         <button onClick={handleSubmit} className="btn btn-primary">
           Add
         </button>
-        {error ? <div className="text-danger">{error}</div> : null}
+        <div className={error ? "invalid-feedback" : ""}>{error}</div>
       </div>
     </div>
   );

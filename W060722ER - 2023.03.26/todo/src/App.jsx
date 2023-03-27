@@ -7,9 +7,7 @@ function App() {
     <div className="App">
       <div className="container">
         <div className="row mt-3">
-          <div className="col-10 mx-auto">
-            <Todo />
-          </div>
+          <Todo />
         </div>
       </div>
     </div>
