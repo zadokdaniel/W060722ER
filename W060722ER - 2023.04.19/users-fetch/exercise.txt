@@ -1,0 +1,10 @@
+1. create new project with bootstrap 
+
+2. services/jsonPlaceholder.js
+	getUserById(userId: number) => User
+
+3. create component UserCard (FC<User>)
+
+4. create a custom hook (id: number) => {isLoading: boolean, data: User, error: any}
+
+5. create a component which will enable the user to choose a user id and show the corresponding card

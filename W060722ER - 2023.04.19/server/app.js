@@ -2,14 +2,14 @@ const express = require("express");
 const app = express();
 
 app.use(require("morgan")("dev"));
-
+app.use(require("cors")());
 const users = require("./db");
 
 let shouldDelay = false;
 const DELAY_TIME = 5000;
 
 app.get("/users/:id", (req, res) => {
-  console.log("should delay: ", shouldDelay);
+  console.log("should delay: ", shouldDelay, req.params.id);
 
   setTimeout(
     () => {
