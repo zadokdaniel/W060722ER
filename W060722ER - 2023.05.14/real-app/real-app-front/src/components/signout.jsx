@@ -1,13 +1,15 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../context/auth.context";
 
-const SignOut = ({ onSignOut }) => {
+const SignOut = ({ redirect = "/" }) => {
   const navigate = useNavigate();
+  const { logout } = useAuth();
 
   useEffect(() => {
-    onSignOut();
-    navigate("/");
-  }, []);
+    logout();
+    navigate(redirect);
+  }, [navigate, logout, redirect]);
 
   return null;
 };

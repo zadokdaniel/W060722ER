@@ -1,6 +1,9 @@
 import { Link, NavLink } from "react-router-dom";
+import { useAuth } from "../context/auth.context";
 
-const Navbar = ({ user }) => {
+const Navbar = () => {
+  const { user } = useAuth();
+
   return (
     <nav
       className="navbar navbar-expand-sm navbar-light bg-light shadow-sm"
@@ -31,7 +34,7 @@ const Navbar = ({ user }) => {
             </li>
             {user?.biz && (
               <li className="nav-item">
-                <NavLink className="nav-link" to="#">
+                <NavLink className="nav-link" to="/my-cards">
                   My Cards
                 </NavLink>
               </li>

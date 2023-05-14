@@ -7,11 +7,11 @@ import { useNavigate, Navigate } from "react-router-dom";
 import { useState } from "react";
 import { useAuth } from "../context/auth.context";
 
-const SignUp = ({ redirect = "/" }) => {
+const SignUpBiz = ({ redirect = "/" }) => {
   const [error, setError] = useState("");
 
   const navigate = useNavigate();
-  const { user, createUser } = useAuth();
+  const { user, createUser, login } = useAuth();
 
   const form = useFormik({
     validateOnMount: true,
@@ -32,7 +32,9 @@ const SignUp = ({ redirect = "/" }) => {
     }),
     async onSubmit(values) {
       try {
-        await createUser({ ...values, biz: false });
+        await createUser({ ...values, biz: true });
+        await login({ email: values.email, password: values.password });
+
         navigate(redirect);
       } catch ({ response }) {
         if (response && response.status === 400) {
@@ -49,7 +51,7 @@ const SignUp = ({ redirect = "/" }) => {
   return (
     <>
       <PageHeader
-        title="Sign Up with Real App"
+        title="Sign Up as Business with Real App"
         description="Open a new account, it is free you yammani!"
       />
 
@@ -92,4 +94,4 @@ const SignUp = ({ redirect = "/" }) => {
   );
 };
 
-export default SignUp;
+export default SignUpBiz;

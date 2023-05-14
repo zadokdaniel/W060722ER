@@ -5,9 +5,12 @@ import { Navigate, useNavigate } from "react-router-dom";
 import { formikValidateUsingJoi } from "../utils/formikValidateUsingJoi";
 import Input from "./common/input";
 import PageHeader from "./common/pageHeader";
+import { useAuth } from "../context/auth.context";
 
-const SignIn = ({ onSubmit, user }) => {
+const SignIn = ({ redirect = "/" }) => {
   const [error, setError] = useState("");
+
+  const { login, user } = useAuth();
 
   const navigate = useNavigate();
 
@@ -28,8 +31,8 @@ const SignIn = ({ onSubmit, user }) => {
     }),
     async onSubmit(values) {
       try {
-        await onSubmit(values);
-        navigate("/");
+        await login(values);
+        navigate(redirect);
       } catch ({ response }) {
         if (response && response.status === 400) {
           setError(response.data);
@@ -68,7 +71,11 @@ const SignIn = ({ onSubmit, user }) => {
         />
 
         <div className="my-2">
-          <button disabled={!form.isValid} className="btn btn-primary">
+          <button
+            type="submit"
+            disabled={!form.isValid}
+            className="btn btn-primary"
+          >
             Sign In
           </button>
         </div>
