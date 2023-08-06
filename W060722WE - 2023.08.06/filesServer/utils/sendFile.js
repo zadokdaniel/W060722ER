@@ -1,7 +1,7 @@
 const fs = require("node:fs");
 const path = require("node:path");
 
-const { getMime } = require("./getMime");
+const { contentType } = require("mime-types");
 
 function createStatic(basePath) {
   if (!basePath) {
@@ -16,7 +16,7 @@ function createStatic(basePath) {
     }
 
     const filePath = path.resolve(basePath, relativePath);
-    const fileMimeType = getMime(path.parse(filePath).ext);
+    const fileMimeType = contentType(path.parse(filePath).ext);
 
     res.setHeader("Content-Type", fileMimeType);
 
