@@ -1,0 +1,22 @@
+@local=http://localhost:3000
+
+GET {{local}}/testing?someQuery=5
+
+
+### Home page 1
+GET {{local}}/
+
+### Home page 2
+GET {{local}}/home
+
+### About page
+GET {{local}}/about
+
+### Contact Us page
+GET {{local}}/contact-us
+
+### Services page
+GET {{local}}/services
+
+### Page Not Found page
+GET {{local}}/none-existing-page

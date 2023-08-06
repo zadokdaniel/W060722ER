@@ -1,0 +1,17 @@
+@local=http://localhost:3000
+
+GET {{local}}/home
+
+
+###
+
+POST {{local}}/withBody
+Content-Type: application/json
+
+{
+    "a": 5, 
+    "b": 7
+}
+
+####
+GET {{local}}/

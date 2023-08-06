@@ -1,0 +1,20 @@
+{
+  "name": "filesserver",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "solution1-start": "node ./solution1",
+    "solution2-start": "node ./solution2",
+    "solution3-start": "node ./solution3",
+    "solution1-dev": "nodemon ./solution1",
+    "solution2-dev": "nodemon ./solution2",
+    "solution3-dev": "nodemon ./solution3"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
