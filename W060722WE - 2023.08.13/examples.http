@@ -1,0 +1,11 @@
+@lcoal=http://localhost:3000
+
+
+GET {{lcoal}}/home
+
+
+####
+GET {{lcoal}}/daskfljdsklfj
+
+###
+POST {{lcoal}}/hello?a=5&b=442
