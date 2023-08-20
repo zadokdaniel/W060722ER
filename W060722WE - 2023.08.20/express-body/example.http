@@ -1,0 +1,22 @@
+@local=http://localhost:3000
+
+POST {{local}}/test
+Content-Type: application/x-www-form-urlencoded
+
+p1=v1&p2=v2
+
+
+###
+POST {{local}}/test
+Content-Type: application/json
+
+{
+    "a": 5, 
+    "b": 10
+}
+
+###
+POST {{local}}/test
+Content-Type: text/plain
+
+hello
