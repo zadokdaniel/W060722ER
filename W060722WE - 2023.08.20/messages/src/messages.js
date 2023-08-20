@@ -73,7 +73,13 @@ function deleteId(id) {
 
   messages = outResult;
 
-  return inResult[0];
+  const deletedMessages = inResult[0];
+
+  if (!deletedMessages) {
+    throw new Error(`id "${id}" was not found`);
+  }
+
+  return deletedMessages;
 }
 
 function categorizeArray(arr, fn = () => {}) {
