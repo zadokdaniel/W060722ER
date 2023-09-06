@@ -1,0 +1,55 @@
+@local=http://localhost:3000
+@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGVmODg3OTJlMzRkMDBmYTA0ZTI5YmYiLCJiaXoiOnRydWUsIm5hbWUiOiJkYW5pZWwiLCJpYXQiOjE2OTM3NjMyMzl9.PCNcOsxON-gnyIAYbRPjhq7uvM6IZrtbEFkKErZF6Vo
+
+GET {{local}}/users/test
+
+### Create New User
+POST {{local}}/users
+Content-Type: application/json
+
+{
+    "name": "daniel", 
+    "email": "a@aa.com" , 
+    "password": "Aa123456",
+    "biz": true
+}
+
+
+
+### Authenticate (login)
+POST {{local}}/auth
+Content-Type: application/json
+
+{
+  "email": "a@a.com",
+  "password": "Aa123456"
+}
+
+### get users information
+GET {{local}}/users/me
+x-auth-token: {{token}}
+
+
+
+#### create card
+POST {{local}}/cards
+x-auth-token: {{token}}
+Content-Type: application/json
+
+{
+  "bizName": "lemon",
+  "bizDescription": "lemons for all", 
+  "bizAddress": "lemon av.", 
+  "bizPhone": "034343434",
+  "bizImage": "http://cdn.pixabay.com/dafjdsklf"
+}
+
+
+### add to favorite
+PATCH {{local}}/users/cards
+x-auth-token: {{token}}
+Content-Type: application/json
+
+{
+  "cards": [310480227, 233223]
+}
